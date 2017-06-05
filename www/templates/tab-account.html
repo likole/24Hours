@@ -1,0 +1,15 @@
+<ion-view>
+	<ion-nav-title>
+			个人目标233
+			 <button class="button icon ion-plus button-clear button-balanced" ng-click="modal.show()" style="float: right">
+      </button>
+	</ion-nav-title>
+     <ion-content>
+      <ion-list>
+        <ion-item ng-repeat="contact in contacts">
+        	<div style="float:left">{{contact.name}}</div>
+          <div style="float:right">{{contact.time}}</div>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+</ion-view>

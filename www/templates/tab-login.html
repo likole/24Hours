@@ -1,0 +1,49 @@
+<ion-view title="登陆页面">  
+	<style>
+		.connect-login{
+			margin-top:90px;
+			width: 80%;
+			margin-left: auto;
+			margin-right: auto;
+			height:90px;
+			border-top: 1px solid grey;
+			}
+		.row{
+		    display: grid;
+		    grid-template-columns: 33.3% 33.3% 33.3% ;
+		    grid-template-rows: 80px 
+  		}
+	</style>
+    <ion-content>  
+        <div class="list list-inset">  
+            <label class="item item-input">  
+                <i class="icon ion-person"></i>  
+                <input type="text" placeholder="Username" ng-model="username">  
+            </label>  
+            <label class="item item-input">  
+                <i class="icon ion-locked"></i>  
+                <input type="password" placeholder="Password" ng-model="password">  
+            </label>  
+        </div>  
+        <button class="button button-block button-positive" style="border-radius: 20px;" onclick="logining()">
+			登录</button> 
+		<button class="button button-block button-balanced" style="border-radius: 20px;">
+			注册</button> 
+		<a href="#"><span style="float: right;margin-right: 20px;">忘记密码</span></a>
+		<div class="row connect-login">
+		  <a class="tab-item" style="float: left;">
+			    <i class="icon ion-social-github"></i>
+			    Github
+			  </a>
+			  <a class="tab-item" style="float: center;">
+			    <i class="icon ion-social-twitter"></i>
+			    Twitter
+			  </a>
+			  <a class="tab-item" style="float: right;">
+			    <i class="icon ion-social-facebook"></i>
+			    Facebook
+			  </a>
+		</div>
+
+    </ion-content>  
+</ion-view>  

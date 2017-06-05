@@ -1,0 +1,43 @@
+<ion-view view-title="时间管理">
+  <ion-content>
+
+    <!--计时器-->
+    <ion-list>
+      <ion-item ng-repeat="item in items" class="item-icon-left">
+        <i class="icon {{item.icon}} {{item.status==0?'balanced':'assertive'}}"></i>
+        <b class="{{item.status==0?'balanced':'assertive'}}">{{item.name}}</b>
+        <p>{{item.hours}}:{{item.minutes}}:{{item.second}}</p>
+      </ion-item>
+    </ion-list>
+
+    <!--事件标签-->
+    <ion-item class="row row-wrap" style="border:none">
+      <button class="col" ng-repeat="tag in tags" ng-click=newItem(tag.name,tag.icon)><i class="icon {{tag.icon}}"></i>{{tag.name}}</button>
+      <button class="col" ng-click="newTag()"><i class="icon ion-ios-plus-outline"></i>新建</button>
+    </ion-item>
+
+    <style>
+
+      .col {
+        border: 1px solid black;
+        margin-top: 5px;
+        margin-left: 0px;
+        font-size: 15px;
+        width: 95%;
+        background-color: #11C1F3;
+        border-radius: 5px;
+      }
+
+      .lis {
+        list-style: none;
+        margin: auto;
+        font-size: 18px;
+        border: 1px solid;
+        width: 90%;
+        height: 30px;
+        margin-top: 3px;;
+      }
+    </style>
+
+  </ion-content>
+</ion-view>
