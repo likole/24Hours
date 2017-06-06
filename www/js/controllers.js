@@ -683,9 +683,10 @@ angular.module('starter.controllers', [])
     ];
 
     //新建标签
-    $scope.newTag = function (newItem) {
-      $scope.tags.push({'name': newItem.name, icon:  newItem.icon});
-      newItem={};
+    $scope.newTag = function (nitem) {
+      $scope.tags.push({'name': nitem.name, icon:  nitem.icon});
+      nitem={};
+      nitem.icon="ion-ionic";
       $scope.modal.hide();
     };
 
@@ -752,6 +753,7 @@ angular.module('starter.controllers', [])
       u.lastName = null;
       $scope.modal.hide();
     };
+
 
   })
 
@@ -828,6 +830,7 @@ angular.module('starter.controllers', [])
       $scope.drawCircle("canvas_circle", data_arr, color_arr, text_arr);
     };
 
+    $scope.nitem={icon:"ion-ionic"};
   })
 
   /**
