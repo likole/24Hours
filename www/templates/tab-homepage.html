@@ -3,16 +3,18 @@
 
     <!--计时器-->
     <ion-list>
-      <ion-item ng-repeat="item in items" class="item-icon-left">
+      <ion-item ng-repeat="item in items" class="item-icon-left item-button-right">
         <i class="icon {{item.icon}} {{item.status==0?'balanced':'assertive'}}"></i>
-        <b class="{{item.status==0?'balanced':'assertive'}}">{{item.name}}</b>
-        <p>{{item.hours}}:{{item.minutes}}:{{item.second}}</p>
+        <b class="{{item.status==0?'balanced':'assertive'}}">{{item.name}} <span style="float: right">{{item.hours}}:{{item.minutes}}:{{item.second}}</span></b>
+        <button class="button ion-stop button-clear button-assertive" ng-if="item.status==0" ng-click="stopItem(item.id)"></button>
+        <button class="button ion-play button-clear button-balanced"  ng-if="item.status!=0"></button>
       </ion-item>
     </ion-list>
 
     <!--事件标签-->
     <ion-item class="row row-wrap" style="border:none">
-      <button class="col" ng-repeat="tag in tags" ng-click=newItem(tag.name,tag.icon)><i class="icon {{tag.icon}}"></i>{{tag.name}}</button>
+      <button class="col" ng-repeat="tag in tags" ng-click=newItem(tag.name,tag.icon)><i class="icon {{tag.icon}}"></i>{{tag.name}}
+      </button>
       <button class="col" ng-click="newTag()"><i class="icon ion-ios-plus-outline"></i>新建</button>
     </ion-item>
 
