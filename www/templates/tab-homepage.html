@@ -14,14 +14,23 @@
 
     <!--事件标签-->
     <ion-item class="row row-wrap" style="border:none">
-      <button class="button button-outline button-balanced button-small" style="margin: 2px;" ng-repeat="tag in tags"
+      <button class="buttonSize button button-outline button-balanced button-small" style="margin: 2px;" ng-repeat="tag in tags"
               ng-click=newItem(tag.name,tag.icon)>
         <i class="icon {{tag.icon}}"></i> {{tag.name}}
       </button>
-      <button class="button button-outline button-balanced button-small" style="margin: 2px;" ng-click="modal.show()">
+      <button class="buttonSize button button-outline button-balanced button-small" style="margin: 2px;" ng-click="modal.show()">
         <i class="icon ion-ios-plus-outline"></i> 新建
       </button>
     </ion-item>
+
+    <style>
+      .buttonSize{
+        width: 23%;
+        float: left;
+        position: relative;
+        left: 2%;
+      }
+    </style>
 
   </ion-content>
 </ion-view>

@@ -6,7 +6,7 @@ angular.module('starter.controllers', [])
 /**
  * 主页控制器
  */
-  .controller('homepageCtrl', function ($scope, $rootScope,$ionicModal) {
+  .controller('homepageCtrl', function ($scope, $rootScope, $ionicModal) {
 
     //图标列表
     $scope.icons = [
@@ -684,9 +684,9 @@ angular.module('starter.controllers', [])
 
     //新建标签
     $scope.newTag = function (nitem) {
-      $scope.tags.push({'name': nitem.name, icon:  nitem.icon});
-      nitem={};
-      nitem.icon="ion-ionic";
+      $scope.tags.push({'name': nitem.name, icon: nitem.icon});
+      nitem = {};
+      nitem.icon = "ion-ionic";
       $scope.modal.hide();
     };
 
@@ -731,6 +731,8 @@ angular.module('starter.controllers', [])
       $scope.modal = modal;
     });
 
+    $scope.nitem = {icon: "ion-ionic"};
+
   })
 
   /**
@@ -754,6 +756,11 @@ angular.module('starter.controllers', [])
       $scope.modal.hide();
     };
 
+    //列表排序
+    $scope.moveItem = function(item, fromIndex, toIndex) {
+      $scope.contacts.splice(fromIndex, 1);
+      $scope.contacts.splice(toIndex, 0, item);
+    };
 
   })
 
@@ -828,9 +835,10 @@ angular.module('starter.controllers', [])
         };
       }
       $scope.drawCircle("canvas_circle", data_arr, color_arr, text_arr);
+      $scope.$broadcast('scroll.refreshComplete');
     };
 
-    $scope.nitem={icon:"ion-ionic"};
+    $scope.init();
   })
 
   /**
@@ -863,19 +871,35 @@ angular.module('starter.controllers', [])
     scope:$scope;
 
     $scope.logining = function () {
-      scope:$scope;
       var reg = new RegExp("\d{3}-\d{8}|\d{4}-\{7,8}");
       var temp;
       if (reg.test($scope.username) == 1) temp = "phone=" + $scope.username;
-      else temp = "email" + $scope.username;
+      else temp = "email=" + $scope.username;
       $http.get("http://123.206.116.70:8080/hours/user_login?" + temp + $scope.password)
         .then(function (response) {
           if (response.data.status == 0) {
-            alert(response);
             localStorage.setItem("user", response.data.token);
             //status为0时，操作成功，执行操作成功的逻辑
           } else {
             alert("用户名或密码错误");
+            //status为非0时，操作失败,执行操作失败的逻辑
+            //alert(response.data.message);
+          }
+        });
+    }
+    $scope.register = function () {
+      var reg = new RegExp("\d{3}-\d{8}|\d{4}-\{7,8}");
+      var temp;
+      if (reg.test($scope.username) == 1) temp = "phone=" + $scope.username;
+      else temp = "email=" + $scope.username;
+      $http.get("http://123.206.116.70:8080/hours/user_register?" + temp + $scope.password)
+        .then(function (response) {
+          if (response.data.status == 0) {
+            alert("注册成功")
+            localStorage.setItem("user", response.data.token);
+            //status为0时，操作成功，执行操作成功的逻辑
+          } else {
+            alert("用户名或密码填写不正确");
             //status为非0时，操作失败,执行操作失败的逻辑
             //alert(response.data.message);
           }

@@ -1,14 +1,20 @@
 <ion-view>
 	<ion-nav-title>
-			个人目标233
+			个人目标
 			 <button class="button icon ion-plus button-clear button-balanced" ng-click="modal.show()" style="float: right">
       </button>
 	</ion-nav-title>
      <ion-content>
-      <ion-list>
+      <ion-list show-delete="true" show-reorder="true">
         <ion-item ng-repeat="contact in contacts">
         	<div style="float:left">{{contact.name}}</div>
           <div style="float:right">{{contact.time}}</div>
+          <ion-delete-button class="ion-minus-circled"
+                             ng-click="contacts.splice($index, 1)">
+          </ion-delete-button>
+          <ion-reorder-button class="ion-navicon"
+                              on-reorder="moveItem(contact, $fromIndex, $toIndex)">
+          </ion-reorder-button>
         </ion-item>
       </ion-list>
     </ion-content>

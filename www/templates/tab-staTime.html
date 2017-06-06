@@ -1,13 +1,16 @@
-<ion-view view-title="Dashboard">
+<ion-view view-title="数据统计">
 	<ion-content>
-		<p style=" position: relative; top: 50px;" >
-            <canvas id="canvas_circle" width="350" height="200"  ></canvas>
+    <ion-refresher
+      pulling-text="下拉刷新..."
+      on-refresh="init()">
+    </ion-refresher>
+		<p style=" position: relative; top: 20px;" >
+            <canvas id="canvas_circle" width="350" height="180"  ></canvas>
        </p>
 			<ion-list>
 				<ion-item ng-repeat="item in data">
-					{{item.name}} {{item.hours}}小时{{item.minutes}}分钟{{item.second}}秒
+          {{item.name}} <span  style="float: right;" >{{item.hours}}小时{{item.minutes}}分钟{{item.second}}秒</span>
 				</ion-item>
-				<ion-item ng-click="init()">点击查看饼状图</ion-item>
 			</ion-list>
 	</ion-content>
 </ion-view>
